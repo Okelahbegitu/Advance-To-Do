@@ -4,10 +4,20 @@
  */
 package form;
 
+import static form.crjava.readData;
+import java.util.List;
+import org.joda.time.DateTime;
+import org.joda.time.Duration;
+import org.joda.time.format.DateTimeFormat;
+import org.joda.time.format.DateTimeFormatter;
+import java.time.LocalDateTime;
+
+
 /**
  *
  * @author lenov
  */
+
 public class ControlToDo extends javax.swing.JFrame {
     
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(ControlToDo.class.getName());
@@ -35,24 +45,29 @@ public class ControlToDo extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         jScrollPane4 = new javax.swing.JScrollPane();
         Idesc = new javax.swing.JTextArea();
-        jComboBox1 = new javax.swing.JComboBox<>();
+        Istatus = new javax.swing.JComboBox<>();
         createBtn = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jScrollPane3.setViewportView(Ititle);
 
-        jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jLabel1.setText("Title");
+        jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
 
-        jLabel2.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jLabel2.setText("Desc");
+        jLabel2.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
 
         Idesc.setColumns(20);
         Idesc.setRows(5);
         jScrollPane4.setViewportView(Idesc);
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Not-Important", "Important", "Urgent" }));
+        Istatus.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Not-Important", "Important", "Urgent" }));
+        Istatus.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                IstatusActionPerformed(evt);
+            }
+        });
 
         createBtn.setText("Create");
 
@@ -68,7 +83,7 @@ public class ControlToDo extends javax.swing.JFrame {
                     .addComponent(jScrollPane3, javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, 338, Short.MAX_VALUE)
-                    .addComponent(jComboBox1, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(Istatus, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap(151, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -89,7 +104,7 @@ public class ControlToDo extends javax.swing.JFrame {
                 .addGap(37, 37, 37)
                 .addComponent(dateTimePicker, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(36, 36, 36)
-                .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(Istatus, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(27, 27, 27)
                 .addComponent(createBtn, javax.swing.GroupLayout.DEFAULT_SIZE, 44, Short.MAX_VALUE)
                 .addGap(16, 16, 16))
@@ -98,48 +113,56 @@ public class ControlToDo extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void createBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_createBtnActionPerformed
+        // TODO add your handling code here:
+         DateTimeFormatter format = DateTimeFormatter.forPattern("yyyy-MM-dd hh:mm a");
+        LocalDateTime type = dateTimePicker.getDateTimePermissive();
+        crjava.createData(Ititle.getText(), waktu, Idesc.getText(), Istatus.getSelectedItem().toString());
+        String Utime = type.format( ) 
+        {
+           
+
+        }
+
+    
+    }//GEN-LAST:event_createBtnActionPerformed
+
+    private void IstatusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_IstatusActionPerformed
+        // TODO add your handling code here:
+
+    }//GEN-LAST:event_IstatusActionPerformed
+
     /**
      * @param args the command line arguments
      */
     public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
+    /* Set the Nimbus look and feel */
+    //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
+    /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
          * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
+     */
+    try {
+        for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
+            if ("Nimbus".equals(info.getName())) {
+                javax.swing.UIManager.setLookAndFeel(info.getClassName());
+                break;
             }
-        } catch (ReflectiveOperationException | javax.swing.UnsupportedLookAndFeelException ex) {
-            logger.log(java.util.logging.Level.SEVERE, null, ex);
         }
-        //</editor-fold>
-
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(() -> new ControlToDo().setVisible(true));
+    } catch (ReflectiveOperationException | javax.swing.UnsupportedLookAndFeelException ex) {
+        logger.log(java.util.logging.Level.SEVERE, null, ex);
     }
+    //</editor-fold>
+
+    /* Create and display the form */
+    java.awt.EventQueue.invokeLater(() -> new ControlToDo().setVisible(true));
+}
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextArea Idesc;
     private javax.swing.JComboBox<String> Istatus;
-    private javax.swing.JComboBox<String> Istatus1;
-    private javax.swing.JComboBox<String> Istatus10;
-    private javax.swing.JComboBox<String> Istatus2;
-    private javax.swing.JComboBox<String> Istatus3;
-    private javax.swing.JComboBox<String> Istatus4;
-    private javax.swing.JComboBox<String> Istatus5;
-    private javax.swing.JComboBox<String> Istatus6;
-    private javax.swing.JComboBox<String> Istatus7;
-    private javax.swing.JComboBox<String> Istatus8;
-    private javax.swing.JComboBox<String> Istatus9;
     private javax.swing.JTextPane Ititle;
     private javax.swing.JButton createBtn;
     private com.github.lgooddatepicker.components.DateTimePicker dateTimePicker;
-    private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JScrollPane jScrollPane3;
