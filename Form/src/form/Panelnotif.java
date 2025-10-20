@@ -11,10 +11,14 @@ import javax.swing.UIManager.LookAndFeelInfo;
  * @author Finn Seville
  */
 public class Panelnotif extends javax.swing.JPanel {
-    public String id;    
-    public String title;
-    public String desc;
-    public String date;
+    String idDta;
+    public void pro(String id, String ititle,String itime, String istatus, String idesck){
+        idDta = id;
+        desc.setText(idesck);
+        title.setText(ititle);
+        status.setText(istatus);
+        time.setText(itime);
+    }    
     public static void main(String[] args) {
         try {
             // Pilih tema
@@ -43,27 +47,27 @@ public class Panelnotif extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
+        time = new javax.swing.JLabel();
+        title = new javax.swing.JLabel();
+        desc = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
-        jLabel4 = new javax.swing.JLabel();
+        status = new javax.swing.JLabel();
 
-        jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        jLabel1.setText("Advance To-Do");
+        time.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        time.setText("Advance To-Do");
 
-        jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
-        jLabel2.setText("TITLE#1");
+        title.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        title.setText("TITLE#1");
 
-        jLabel3.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jLabel3.setText("DESKRIPSI");
+        desc.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        desc.setText("DESKRIPSI");
 
         jButton1.setText("Later");
 
         jButton2.setText("Mark As Done");
 
-        jLabel4.setText("STATUS");
+        status.setText("STATUS");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -72,10 +76,10 @@ public class Panelnotif extends javax.swing.JPanel {
             .addGroup(layout.createSequentialGroup()
                 .addGap(14, 14, 14)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel4)
-                    .addComponent(jLabel2)
-                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 144, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(status)
+                    .addComponent(title)
+                    .addComponent(time, javax.swing.GroupLayout.PREFERRED_SIZE, 144, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(desc, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(531, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -87,14 +91,14 @@ public class Panelnotif extends javax.swing.JPanel {
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(16, 16, 16)
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(14, 14, 14)
-                .addComponent(jLabel4)
+                .addGap(12, 12, 12)
+                .addComponent(time, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(jLabel2)
+                .addComponent(status)
+                .addGap(18, 18, 18)
+                .addComponent(title)
                 .addGap(30, 30, 30)
-                .addComponent(jLabel3)
+                .addComponent(desc)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 51, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -105,11 +109,11 @@ public class Panelnotif extends javax.swing.JPanel {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel desc;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel status;
+    private javax.swing.JLabel time;
+    private javax.swing.JLabel title;
     // End of variables declaration//GEN-END:variables
 }

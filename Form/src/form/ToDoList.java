@@ -12,6 +12,7 @@ import org.joda.time.DateTime;
 import org.joda.time.format.DateTimeFormatter;
 import org.joda.time.format.DateTimeFormat;
 import org.joda.time.LocalDateTime;
+import org.joda.time.Duration;
 
 
 
@@ -31,11 +32,13 @@ public class ToDoList extends javax.swing.JFrame {
         generate();
         new javax.swing.Timer(60000, e ->{
             DateTimeFormatter format = DateTimeFormat.forPattern("yyyy-MM-dd hh:mm a");
-            String  rn = format.print(LocalDateTime.now());
+            DateTime  rn = DateTime.now();
             List<DataItem> data = crjava.readData();
             for(DataItem dataItem : data){
-                if(dataItem.waktu.equals(rn)){
-                    new
+                Duration deadline = new Duration(rn, format.parseDateTime(dataItem.waktu));
+                if(deadline.getStandardMinutes() <= 5 && deadline.getStandardMinutes() <=0 ){
+                    Panelnotif notif = new Panelnotif();
+                    notif.pro(dataItem.id, dataItem.nama, dataItem.waktu, dataItem.status, dataItem.deskripsi);
                 }
             }
         });
