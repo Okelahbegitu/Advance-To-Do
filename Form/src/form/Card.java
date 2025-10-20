@@ -3,19 +3,77 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
  */
 package form;
+
 import com.formdev.flatlaf.FlatLightLaf;
-import javax.swing.UIManager; 
+import java.awt.Color;
+import javax.swing.UIManager;
+
 /**
  *
  * @author lenov
  */
 public class Card extends javax.swing.JPanel {
 
+    public Card() {
+        initComponents();
+        setOpaque(true);
+        setStatus(status); // status default "Not-Important"
+    }
+
+    public Card(String Unama, String Udesk, String Ustatus, String Utime) {
+        initComponents();
+        setOpaque(true);
+        setStatus(status); // <== tambahkan ini
+        ljudul.setText(Unama);
+        ldesk.setText(Udesk);
+        lwaktu.setText(Utime);
+        lstatus.setText(Ustatus);
+        setStatus(Ustatus);
+
+    }
+
+    private String status = "Not-Important";
+
     /**
      * Creates new form Card
      */
-    public Card() {
-        initComponents();
+    /**
+     * Get the value of status
+     *
+     * @return current status
+     */
+    public String getStatus() {
+        return status;
+    }
+
+    /**
+     * Set the value of title
+     *
+     * @param backgroung = Status (Urgent, Important, Not-Important)
+     */
+    public void setStatus(String status) {
+        if (status.equals("Urgent")) {
+            this.setBackground(new Color(237, 63, 39));
+            ljudul.setForeground(Color.white);
+            lstatus.setForeground(Color.white);
+            lwaktu.setForeground(Color.white);
+            ldesk.setForeground(Color.white);
+
+        } else if (status.equals("Important")) {
+            this.setBackground(new Color(254, 178, 26));
+            ljudul.setForeground(Color.white);
+            lstatus.setForeground(Color.white);
+            lwaktu.setForeground(Color.white);
+            ldesk.setForeground(Color.white);
+
+        } else if (status.equals("Not-Important")) {
+            this.setBackground(new Color(19, 70, 134));
+            ljudul.setForeground(Color.white);
+            lstatus.setForeground(Color.white);
+            lwaktu.setForeground(Color.white);
+            ldesk.setForeground(Color.white);
+
+        }
     }
 
     /**
@@ -27,60 +85,82 @@ public class Card extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        title = new javax.swing.JLabel();
-        desc = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
-
-        title.setText("Title Here");
-        title.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
-        title.setName("title"); // NOI18N
-
-        desc.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        desc.setText("jLabel1");
-        desc.setName("desc"); // NOI18N
+        ljudul = new javax.swing.JLabel();
+        ldesk = new javax.swing.JLabel();
+        lstatus = new javax.swing.JLabel();
+        lwaktu = new javax.swing.JLabel();
 
         jButton1.setText("Edit ✏️");
 
         jButton2.setText("Done ✅");
+
+        ljudul.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        ljudul.setText("Title Here");
+        ljudul.setName("ljudul"); // NOI18N
+
+        ldesk.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        ldesk.setText("jLabel1");
+        ldesk.setName("desc"); // NOI18N
+
+        lstatus.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        lstatus.setText("jLabel1");
+        lstatus.setName("desc"); // NOI18N
+
+        lwaktu.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        lwaktu.setText("jLabel1");
+        lwaktu.setName("desc"); // NOI18N
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
+                .addGap(30, 30, 30)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(desc, javax.swing.GroupLayout.PREFERRED_SIZE, 230, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(title, javax.swing.GroupLayout.PREFERRED_SIZE, 643, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(57, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jButton1)
-                .addGap(67, 67, 67)
-                .addComponent(jButton2)
-                .addGap(31, 31, 31))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(ldesk)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(ljudul)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(lstatus))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(lwaktu)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 142, Short.MAX_VALUE)
+                                .addComponent(jButton1)
+                                .addGap(62, 62, 62)
+                                .addComponent(jButton2)))
+                        .addGap(18, 18, 18))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(title, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(desc, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(34, 34, 34)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(ljudul)
+                    .addComponent(lstatus))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(ldesk)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 49, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton1)
-                    .addComponent(jButton2))
-                .addGap(16, 16, 16))
+                    .addComponent(jButton2)
+                    .addComponent(lwaktu))
+                .addGap(22, 22, 22))
         );
     }// </editor-fold>//GEN-END:initComponents
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel desc;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
-    private javax.swing.JLabel title;
+    private javax.swing.JLabel ldesk;
+    private javax.swing.JLabel ljudul;
+    private javax.swing.JLabel lstatus;
+    private javax.swing.JLabel lwaktu;
     // End of variables declaration//GEN-END:variables
 }

@@ -9,29 +9,16 @@ import com.google.gson.reflect.TypeToken;
 import java.io.*;
 import java.lang.reflect.Type;
 import java.util.*;
-
-class DataItem {
-    int id;
-    String nama;
-    String waktu;
-    String deskripsi;
-    String status;
-
-    public DataItem(int id, String nama, String waktu, String deskripsi) {
-        this.id = id;
-        this.nama = nama;
-        this.waktu = waktu;
-        this.deskripsi = deskripsi;
-        this.status = status;
-    }
-}
-
+import org.joda.time.format.DateTimeFormat;
+import org.joda.time.format.DateTimeFormatter;
+import org.joda.time.DateTime;
+import java.util.Random;
 /**
  *
  * @author ASUS
  */
 public class crjava {
-    private static final String FILE_PATH = "data.json";
+    private static final String FILE_PATH = "src/form/data.json";
     private static final Gson gson = new Gson();
 
     // Fungsi membaca data dari JSON
@@ -56,15 +43,44 @@ public class crjava {
     }
 
     // Fungsi CREATE: menambah data baru
-    public static void createData(String nama, String waktu, String deskripsi) {
+    public static void createData(String nama, String waktu, String deskripsi, String status) {
         List<DataItem> dataList = readData();
-        int newId = dataList.isEmpty() ? 1 : dataList.get(dataList.size() - 1).id + 1;
+        DateTime now = new DateTime();
+        DateTimeFormatter format = DateTimeFormat.forPattern("Y-M-D");
+        Random random = new Random();
+        int randid = random.nextInt(100 ,999);
+        String newId = now.toString(format) + "-" + String.valueOf(randid);
 
-        DataItem newData = new DataItem(newId, nama, waktu, deskripsi);
+        DataItem newData = new DataItem(newId, nama, waktu, deskripsi, status);
         dataList.add(newData);
 
         writeData(dataList);
         System.out.println("✅ Data berhasil ditambahkan: " + nama);
+    }
+    
+    public static void updateData(String Id, String Unama, String Udesk, String Ustatus, String Utime){
+        List<DataItem> datalist = readData();
+        boolean found = false;
+        for (DataItem item : datalist){
+            if (item.id.equals(Id)){
+                item.nama = Unama;
+                item.status = Ustatus;
+                item.waktu = Utime;
+                item.deskripsi = Udesk;
+                found = true;
+                break;
+            }
+        }
+        if (found){
+            writeData(datalist);
+            System.out.println("Berhasil di perbarui!");
+        } else {
+            System.err.println("Gagal diperbarui");
+        }
+    }
+    
+    public static void deleteData(String[] args) {
+        
     }
 
     // Menampilkan semua data
@@ -84,8 +100,7 @@ public class crjava {
     }
 
     public static void main(String[] args) {
-        // Contoh CREATE
-        createData("Belajar JSON CRUD", "2025-10-17 22:00", "Membuat fungsi CRUD di Java");
+        // Contoh CREATE;
 
         // Contoh READ
         displayData();
